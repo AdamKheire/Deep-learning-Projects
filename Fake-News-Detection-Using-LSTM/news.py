@@ -8,13 +8,14 @@ from nltk.stem.porter import PorterStemmer
 from sklearn.feature_extraction.text import TfidfVectorizer
 import requests
 import base64
+import os
 
 
 # Download NLTK resources
 nltk.download('stopwords')
 
-import os
-print("Current working directory:", os.getcwd())
+
+
 # Initialize NLTK objects
 port_stem = PorterStemmer()
 vectorization = TfidfVectorizer()
@@ -22,8 +23,18 @@ vectorization = TfidfVectorizer()
 
 # Load the logistic regression model
 # with open('model1.pkl', 'rb') as file:
-with open('https://github.com/AdamKheire/Deep-learning-Projects/blob/main/Fake-News-Detection-Using-LSTM/model1.pkl', 'rb') as file:
+#with open('https://github.com/AdamKheire/Deep-learning-Projects/blob/main/Fake-News-Detection-Using-LSTM/model1.pkl', 'rb') as file:
+  #  load_model = pickle.load(file)
+# Specify the path to the model file
+model_file_path = 'model1.pkl'
+# Check if the model file exists
+if not os.path.exists(model_file_path):
+    print(f"Error: '{model_file_path}' file not found.")
+    exit(1)  # Exit the script with a non-zero exit code if file is not found
+# Load the logistic regression model from the model file
+with open(model_file_path, 'rb') as file:
     load_model = pickle.load(file)
+    
 
 # Load the TF-IDF vectorizer
 with open('vectorizer.pkl', 'rb') as file:
