@@ -13,6 +13,8 @@ import base64
 # Download NLTK resources
 nltk.download('stopwords')
 
+import os
+print("Current working directory:", os.getcwd())
 # Initialize NLTK objects
 port_stem = PorterStemmer()
 vectorization = TfidfVectorizer()
