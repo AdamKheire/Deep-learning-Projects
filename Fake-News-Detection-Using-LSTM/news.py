@@ -13,6 +13,7 @@ import os
 
 # Download NLTK resources
 nltk.download('stopwords')
+nltk.download('punkt')
 
 
 
