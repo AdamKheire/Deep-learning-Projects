@@ -19,8 +19,10 @@ print("Current working directory:", os.getcwd())
 port_stem = PorterStemmer()
 vectorization = TfidfVectorizer()
 
+
 # Load the logistic regression model
-with open('model1.pkl', 'rb') as file:
+# with open('model1.pkl', 'rb') as file:
+with open('https://github.com/AdamKheire/Deep-learning-Projects/blob/main/Fake-News-Detection-Using-LSTM/model1.pkl', 'rb') as file:
     load_model = pickle.load(file)
 
 # Load the TF-IDF vectorizer
