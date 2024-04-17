@@ -37,9 +37,20 @@ with open(model_file_path, 'rb') as file:
     
 
 # Load the TF-IDF vectorizer
-with open('vectorizer.pkl', 'rb') as file:
-    vector_form = pickle.load(file)
-    
+# with open('vectorizer.pkl', 'rb') as file:
+#     vector_form = pickle.load(file)
+
+
+model_file_path2 = 'vectorizer.pkl'
+# Check if the model file exists
+if not os.path.exists(model_file_path2):
+    print(f"Error: '{model_file_path2}' file not found.")
+    exit(1)  # Exit the script with a non-zero exit code if file is not found
+# Load the logistic regression model from the model file
+with open(model_file_path2, 'rb') as file:
+    load_model = pickle.load(file)
+
+
 def stemming(content):
     con=re.sub('[^a-zA-Z]', ' ', content)
     con=con.lower()
